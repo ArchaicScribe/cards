@@ -33,6 +33,6 @@ package edu.cnm.deepdive;
 
   @Override
   public String toString() {
-  return String.format("%s %s" , rank, suit);
+  return String.format("%2s %s" , rank, suit);
   }
 }

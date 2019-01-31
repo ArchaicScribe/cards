@@ -4,7 +4,7 @@ import java.security.SecureRandom;
 import java.util.Comparator;
 import java.util.Random;
 
-public class War {
+public class SimpleWar {
 
   private Deck deck;
   private Random rng;
@@ -12,7 +12,7 @@ public class War {
   private int tally2;
   private Referree referree;
 
-  public War(Random rng) {
+  public SimpleWar(Random rng) {
     this.rng = rng;
     deck = new Deck();
     deck.shuffle(rng);
@@ -47,8 +47,37 @@ public class War {
       }
     } while (tied);
   }
-    public static void main(String[]args) {
-      War war = new War(new SecureRandom());
+
+  protected Deck getDeck() {
+    return deck;
+  }
+
+  protected Random getRng() {
+    return rng;
+  }
+
+  protected Referree getReferree() {
+    return referree;
+  }
+
+  protected int getTally1() {
+    return tally1;
+  }
+
+  protected void setTally1(int tally1) {
+    this.tally1 = tally1;
+  }
+
+  protected int getTally2() {
+    return tally2;
+  }
+
+  protected void setTally2(int tally2) {
+    this.tally2 = tally2;
+  }
+
+  public static void main(String[]args) {
+      SimpleWar war = new SimpleWar(new SecureRandom());
       try {
         while (true) {
           war.play();
@@ -66,7 +95,7 @@ public class War {
         }
       }
     }
-    private static class Referree implements Comparator<Card> {
+    protected static class Referree implements Comparator<Card> {
 
       @Override
       public int compare(Card card1, Card card2) {
